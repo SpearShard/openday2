@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <nav>
+        <nav className="fixed-nav">
           <Link href="/" className="text-xl font-bold">
             INTUIT CIT
           </Link>
