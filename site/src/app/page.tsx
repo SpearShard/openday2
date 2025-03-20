@@ -1,32 +1,32 @@
-import Image from "next/image";
-import Link from "next/link";
-// import Navbar from "../components/Navbar";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Schedule from "./components/Schedule";
-import Speakers from "./components/Speakers";
-import Sponsors from "./components/Sponsors";
-// import
+// src/app/page.tsx
+import Hero from './components/Hero';
+import About from './components/About';
+import Schedule from './components/Schedule';
+import Sponsors from './components/Sponsors';
+import Venue from './components/Venue';
+import Footer from './components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      {/* <Navbar /> */}
-      
-      {/* Hero Section */}
-      <Hero />
-      
-      {/* About Section */}
-      <About />
-      
-      {/* Schedule Section */}
-      <Schedule />
-      
-      {/* Speakers Section */}
-      <Speakers />
-      
-      <Footer />
-    </main>
+    <div className="snap-y snap-mandatory overflow-y-auto h-screen">
+      <section className="min-h-screen snap-start pt-16">
+        <Hero />
+      </section>
+      <section className="min-h-screen snap-start pt-16">
+        <About />
+      </section>
+      <section className="min-h-screen snap-start pt-16">
+        <Schedule />
+      </section>
+      {/* <section className="min-h-screen snap-start pt-20">
+        <Sponsors />
+      </section> */}
+      <section className="min-h-screen snap-start pt-16">
+        <Venue />
+      </section>
+      <section className="min-h-screen snap-start pt-16">
+        <Footer />
+      </section>
+    </div>
   );
 }
