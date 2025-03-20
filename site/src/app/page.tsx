@@ -2,7 +2,8 @@
 import Hero from './components/Hero';
 import About from './components/About';
 import Schedule from './components/Schedule';
-import Sponsors from './components/Sponsors';
+import Navbar from './components/Navbar';
+// import Sponsors from './components/Sponsors';
 import Venue from './components/Venue';
 import Footer from './components/Footer';
 
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <div className="snap-y snap-mandatory overflow-y-auto h-screen">
       <section className="min-h-screen snap-start pt-16">
+        <Navbar />
         <Hero />
       </section>
       <section className="min-h-screen snap-start pt-16">

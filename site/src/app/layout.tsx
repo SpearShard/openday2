@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <nav className="fixed-nav">
+        {/* <nav className="fixed-nav">
           <Link href="/" className="text-xl font-bold">
             INTUIT CIT
           </Link>
@@ -28,7 +28,7 @@ export default function RootLayout({
             <Link href="/book-a-stall">BOOK A STALL</Link>
             <Link href="/rsvp">RSVP</Link>
           </div>
-        </nav>
+        </nav> */}
         {children}
       </body>
     </html>
