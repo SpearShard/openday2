@@ -1,129 +1,109 @@
 'use client';
 
-import React, { useRef } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-export default function EventSchedule() {
-  const controls = useAnimation();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
-
-  React.useEffect(() => {
-    if (isInView) {
-      controls.start('visible');
-    }
-  }, [controls, isInView]);
-
-  const blockVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.6,
-        ease: 'easeInOut',
-      },
-    }),
-  };
-
-  const schedule = [
+export default function Schedule() {
+  const scheduleBlocks = [
     {
-      time: '10:00 AM - 1:00 PM',
+      time: '10:00 AM TO 1:00 PM',
       title: 'REGISTRATIONS OPEN',
       activities: [
-        { name: 'Tech Off', icon: '⚙️' },
-        { name: 'Domino', icon: '🎲' },
-        { name: 'BizWhiz', icon: '💡' },
-        { name: 'Eureka', icon: '🔬' },
-        { name: 'Policy Forge', icon: '📜' },
+        { name: 'TECH OFF', description: 'TECHNICAL PROJECT EXHIBITION & STUDENT CLUB ACTIVITIES' },
+        { name: 'DOMINO', description: 'GAMING' },
+        { name: 'BIZWHIZ', description: 'BUSINESS QUIZ' },
+        { name: 'EUREKA', description: 'SCIENCE QUIZ' },
+        { name: 'POLICY FORGE', description: 'SCIENCE QUIZ' }
       ],
+      color: 'bg-pink-500'
     },
     {
-      time: '1:00 PM - 2:00 PM',
-      title: 'FOOD & FUN',
+      time: '1:00 PM TO 2:00 PM',
+      title: 'FOOD AND FUN',
       activities: [
-        { name: 'Flash Mob', icon: '💃' },
-        { name: 'The Big Gig', icon: '🎤' },
-        { name: 'Food Path', icon: '🍔' },
+        { name: 'FLASH MOB', description: 'STUDENT DANCE' },
+        { name: 'THE BIG GIG', description: 'STUDENT BAND' },
+        { name: 'FOOD PATH', description: 'CAMPUS FOOD STALLS' }
       ],
+      color: 'bg-yellow-400'
     },
     {
-      time: '2:00 PM - 3:00 PM',
-      title: 'CONNECT SESSION',
-      location: 'Dr. Ramdas M Pai Convention Centre',
+      time: '2:00 PM TO 3:30 PM',
+      title: 'CONNECT',
+      location: '(Dr. Ramdas M Pai Convention Centre)',
       activities: [],
+      color: 'bg-yellow-400'
     },
     {
-      time: '3:45 PM - 4:30 PM',
+      time: '3:45 PM TO 4:30 PM',
       title: 'COMEDY CIRCUIT',
-      location: 'Sir MV Block',
-      activities: [{ name: 'Standup Comedy by Me', icon: '😂' }],
-    },
+      location: '(Dr. Ramdas M Pai Convention Centre)',
+      activities: [
+        { name: 'STAND UP COMEDY', description: 'BY ABHISHEK UPMANYU' }
+      ],
+      color: 'bg-green-500'
+    }
   ];
 
   return (
-    <section id="schedule" className="py-20 md:py-28 bg-black text-yellow-400 px-6 md:px-12 lg:px-24">
-      <div ref={ref} className="max-w-7xl mx-auto">
-        {/* Heading Section */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-7xl font-extrabold uppercase tracking-tight leading-tight">
-            Event Schedule
-          </h2>
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: '10rem' }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="h-1 mx-auto bg-yellow-400 mt-6"
-          />
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="mt-6 text-lg md:text-xl font-medium max-w-3xl mx-auto leading-relaxed text-gray-200"
-          >
-            A day packed with **innovation, fun, and connections** at **CIT Open Day 2025**.
-          </motion.p>
-        </motion.div>
+    <div className="min-h-screen bg-lime-400 py-16 px-4 sm:px-6 lg:px-8">
+      {/* Title */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12"
+      >
+        <h2 className="inline-block text-4xl font-black bg-pink-500 text-black px-8 py-2 transform -rotate-2">
+          EVENT SCHEDULE
+        </h2>
+      </motion.div>
 
-        {/* Schedule Blocks */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {schedule.map((event, index) => (
-            <motion.div
-              key={index}
-              custom={index}
-              initial="hidden"
-              animate={controls}
-              variants={blockVariants}
-              whileHover={{ scale: 1.04, boxShadow: '0 8px 20px rgba(255,255,255,0.3)' }}
-              className="p-6 md:p-8 rounded-lg bg-yellow-400 text-black border-4 border-black shadow-xl flex flex-col justify-between h-full"
-            >
-              <div>
-                <h3 className="text-xl md:text-2xl font-extrabold uppercase mb-3 tracking-wide">{event.time}</h3>
-                <h4 className="text-2xl md:text-3xl font-extrabold uppercase mb-4">{event.title}</h4>
-                {event.location && (
-                  <p className="text-md md:text-lg font-medium italic mb-4 text-gray-800">{event.location}</p>
-                )}
-                {event.activities.length > 0 && (
-                  <ul className="space-y-2">
-                    {event.activities.map((activity, i) => (
-                      <li key={i} className="flex items-center text-md md:text-lg font-semibold">
-                        <span className="mr-3 text-xl md:text-2xl">{activity.icon}</span>
-                        {activity.name}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+      {/* Schedule Grid */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {scheduleBlocks.map((block, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className={`${block.color} p-6 rounded-lg shadow-lg transform hover:scale-102 transition-transform duration-200 border-4 border-black`}
+          >
+            {/* Time */}
+            <div className="text-2xl font-black text-black mb-4">
+              {block.time}
+            </div>
+
+            {/* Title */}
+            <div className="text-3xl font-black text-black mb-4">
+              {block.title}
+            </div>
+
+            {/* Location if exists */}
+            {block.location && (
+              <div className="text-lg font-medium text-black mb-4 italic">
+                {block.location}
               </div>
-            </motion.div>
-          ))}
-        </div>
+            )}
+
+            {/* Activities */}
+            {block.activities.length > 0 && (
+              <div className="space-y-4">
+                {block.activities.map((activity, idx) => (
+                  <div key={idx} className="border-t-2 border-black pt-3">
+                    <div className="text-xl font-bold text-black">
+                      {activity.name}
+                    </div>
+                    <div className="text-sm font-medium text-black">
+                      {activity.description}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

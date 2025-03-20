@@ -84,18 +84,18 @@ export default function Footer() {
       </div>
 
       {/* Cookie Consent Bar */}
-      {isCookieVisible && (
+      {/* {isCookieVisible && (
         <motion.div
           className="fixed bottom-0 left-0 w-full bg-black/90 text-yellow-400 py-4 px-6 flex flex-col md:flex-row items-center justify-between text-sm z-50 shadow-lg"
           initial={{ y: 100 }}
           animate={{ y: 0 }}
           exit={{ y: 100 }}
           transition={{ duration: 0.5 }}
-        >
-          <p className="text-center md:text-left mb-2 md:mb-0">
+        > */}
+      {/* <p className="text-center md:text-left mb-2 md:mb-0">
             We use cookies to enhance your browsing experience and analyze traffic. By clicking "Accept," you consent to the use of cookies.
-          </p>
-          <div className="flex space-x-4">
+          </p> */}
+      {/* <div className="flex space-x-4">
             <button
               onClick={() => setIsCookieVisible(false)}
               className="border-2 border-yellow-400 text-yellow-400 px-4 py-2 rounded-full hover:bg-yellow-400 hover:text-black transition font-medium"
@@ -108,9 +108,9 @@ export default function Footer() {
             >
               Reject
             </button>
-          </div>
-        </motion.div>
-      )}
+          </div> */}
+      {/* </motion.div> */}
+      {/* )} */}
     </footer>
   );
 }
